@@ -983,6 +983,6 @@ public class DunGen : MonoBehaviour
     }
 
     //Demo
-    void UIFollowPlayer() => tagUI.position = Camera.main.WorldToScreenPoint(player.transform.position + new Vector3(0, 0.65f, 0), Camera.MonoOrStereoscopicEye.Mono);
+    //void UIFollowPlayer() => tagUI.position = Camera.main.WorldToScreenPoint(player.transform.position + new Vector3(0, 0.65f, 0), Camera.MonoOrStereoscopicEye.Mono);
 
 }
