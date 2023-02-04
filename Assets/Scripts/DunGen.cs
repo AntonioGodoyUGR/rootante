@@ -48,8 +48,8 @@ public class DunGen : MonoBehaviour
 
     //Game props
     [Header("Game Props")]
-    public Transform propsLowLayer;
-    public Transform propsHighLayer;
+        public Transform propsLowLayer;
+        public Transform propsHighLayer;
 
     public GameObject firePot;
     public GameObject doorWayVertical;
@@ -900,11 +900,11 @@ public class DunGen : MonoBehaviour
                 //Wall
                 if ((exportMap[x, y] & CELL_WALL_NORMAL) != 0)
                 {
-                    if (x>0 && y>0 && x < exportMap.GetLength(0) && y < exportMap.GetLength(1)-1)
+                    if (x>0 && y>0 && x < exportMap.GetLength(0)-1 && y < exportMap.GetLength(1))
                     {
                         if ((exportMap[x+1,y] & CELL_GROUND_NORMAL)==0 && (exportMap[x-1,y] & CELL_GROUND_NORMAL)==0)
                         {
-                            Debug.Log(exportMap[x,y+1] & CELL_GROUND_NORMAL); 
+                            //Debug.Log(exportMap[x,y+1] & CELL_GROUND_NORMAL); 
                             // TODO eliminacion de algunos muros para conectar pasillos, pongo situacion imposible
                             if (Random.Range(0,10) > 11)
                             {
@@ -977,12 +977,12 @@ public class DunGen : MonoBehaviour
                 // raizVerde.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[8].x), ConvertRawToExport(rooms[8].z - 1)), Random.Range(ConvertRawToExport(rooms[8].y), ConvertRawToExport(rooms[8].w - 1)), 0);
                 // raizAzul.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[9].x), ConvertRawToExport(rooms[9].z - 1)), Random.Range(ConvertRawToExport(rooms[9].y), ConvertRawToExport(rooms[9].w - 1)), 0);
 
-                CancelInvoke(); InvokeRepeating(nameof(UIFollowPlayer), 0, 0.01f);
+                CancelInvoke(); //InvokeRepeating(nameof(UIFollowPlayer), 0, 0.01f);
             }
         }
     }
 
     //Demo
-    void UIFollowPlayer() => tagUI.position = Camera.main.WorldToScreenPoint(player.transform.position + new Vector3(0, 0.65f, 0), Camera.MonoOrStereoscopicEye.Mono);
+    //void UIFollowPlayer() => tagUI.position = Camera.main.WorldToScreenPoint(player.transform.position + new Vector3(0, 0.65f, 0), Camera.MonoOrStereoscopicEye.Mono);
 
 }
