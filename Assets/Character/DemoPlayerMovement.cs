@@ -56,7 +56,7 @@ public class DemoPlayerMovement : MonoBehaviour
 
         //Move the player using move vector, we use fix update (fixed delta time) without delta time to get smooth physics
         //Also set interpolate on rigid body to get a smoother movement
-        Vector2 f_MoveVector = new Vector2(Mathf.Abs(moveVector.x), Mathf.Abs(moveVector.y)).normalized;
-        GetComponent<Rigidbody2D>().MovePosition((Vector2)transform.position + f_MoveVector * moveVector * movementSpeed);
+ Vector2 f_MoveVector = new Vector2(Mathf.Abs(moveVector.x), Mathf.Abs(moveVector.y)).normalized;
+ GetComponent<Rigidbody2D>().MovePosition((Vector2)transform.position + f_MoveVector * moveVector * movementSpeed);
     }
 }
