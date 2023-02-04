@@ -58,6 +58,16 @@ public class DunGen : MonoBehaviour
     //Demo Codes
     [Header("Demo")]
     public GameObject player;
+    // public GameObject hormigaReina;
+    // public GameObject hormigaRoja;
+    // public GameObject hormigaVerde;
+    // public GameObject hormigaAzul;
+    
+    // public GameObject raizReina;
+    // public GameObject raizRoja;
+    // public GameObject raizVerde;
+    // public GameObject raizAzul;
+
     public RectTransform tagUI;
     public void SetMapHeight(float value) => mapHeight = (int)value;
     public void SetMapWidth(float value) => mapWidth = (int)value;
@@ -703,21 +713,53 @@ public class DunGen : MonoBehaviour
                         {
                             //North
                             // TONI if ((rawMap[x, y] & CELL_DOOR_N) != 0) { exportMap[xe + p, ye + groundSpace + w] |= CELL_DOOR_HORIZONTAL; }
+                            if ((rawMap[x, y] & CELL_DOOR_N) != 0) {
+                                if (x>0 && y > 0 && x < rawMap.GetLength(0) && y < rawMap.GetLength(1)){
+                                    if ((rawMap[x, y+1] & CELL_ROOM_START) != 0 && (rawMap[x, y-1] & CELL_ROOM_START)!= 0 && (rawMap[x, y+1] & CELL_ROOM_END) != 0 && (rawMap[x, y-1] & CELL_ROOM_END)!= 0) {
+                                        //exportMap[xe + p, ye + groundSpace + w] |= CELL_WALL_NORMAL; 
+                                    
+                                    }
+                                }
+                            }
                             if ((rawMap[x, y] & CELL_PATH_N) != 0) { exportMap[xe + p, ye + groundSpace + w] |= CELL_GROUND_NORMAL; }
                             else if ((rawMap[x, y] & CELL_PATH_N) == 0) { exportMap[xe + p, ye + groundSpace + w] |= CELL_WALL_NORMAL; }
 
                             //East
                             // TONI if ((rawMap[x, y] & CELL_DOOR_E) != 0) { exportMap[xe + groundSpace + w, ye + p] |= CELL_DOOR_VERTICAL; }
+                            if ((rawMap[x, y] & CELL_DOOR_E) != 0) { 
+                                if (x>0 && y > 0 && x < rawMap.GetLength(0) && y < rawMap.GetLength(1)){
+                                    if ((rawMap[x+1, y] & CELL_ROOM_START) != 0 && (rawMap[x-1, y] & CELL_ROOM_START)!= 0 && (rawMap[x+1, y] & CELL_ROOM_END) != 0 && (rawMap[x-1, y] & CELL_ROOM_END)!= 0) {
+                                        //exportMap[xe + groundSpace + w, ye + p] |= CELL_WALL_NORMAL;
+                                    }
+                                }
+                            }
                             if ((rawMap[x, y] & CELL_PATH_E) != 0) { exportMap[xe + groundSpace + w, ye + p] |= CELL_GROUND_NORMAL; }
                             else if ((rawMap[x, y] & CELL_PATH_E) == 0) { exportMap[xe + groundSpace + w, ye + p] |= CELL_WALL_NORMAL; }
 
                             //South
                             // TONI if ((rawMap[x, y] & CELL_DOOR_S) != 0) { exportMap[xe + p, ye - wallSpace + w] |= CELL_DOOR_HORIZONTAL; }
+                            
+                            if ((rawMap[x, y] & CELL_DOOR_S) != 0) {
+                                if (x>0 && y > 0 && x < rawMap.GetLength(0) && y < rawMap.GetLength(1)-1){
+                                    Debug.Log(y);
+                                    Debug.Log(rawMap.GetLength(1));
+                                    if ((rawMap[x, y+1] & CELL_ROOM_START) != 0 && (rawMap[x, y-1] & CELL_ROOM_START)!= 0 && (rawMap[x, y+1] & CELL_ROOM_END) != 0 && (rawMap[x, y-1] & CELL_ROOM_END)!= 0) {
+                                        //exportMap[xe + p, ye - wallSpace + w] |= CELL_WALL_NORMAL;
+                                    }
+                                }
+                            }
                             if ((rawMap[x, y] & CELL_PATH_S) != 0) { exportMap[xe + p, ye - wallSpace + w] |= CELL_GROUND_NORMAL; }
                             else if ((rawMap[x, y] & CELL_PATH_S) == 0) { exportMap[xe + p, ye - wallSpace + w] |= CELL_WALL_NORMAL; }
 
                             //West
                             // TONI if ((rawMap[x, y] & CELL_DOOR_W) != 0) { exportMap[xe - wallSpace + w, ye + p] |= CELL_DOOR_VERTICAL; }
+                            if ((rawMap[x, y] & CELL_DOOR_W) != 0) { 
+                                if (x>0 && y > 0 && x < rawMap.GetLength(0)-1 && y < rawMap.GetLength(1)){
+                                    if ((rawMap[x+1, y] & CELL_ROOM_START) != 0 && (rawMap[x-1, y] & CELL_ROOM_START)!= 0 && (rawMap[x+1, y] & CELL_ROOM_END) != 0 && (rawMap[x-1, y] & CELL_ROOM_END)!= 0) {
+                                        //exportMap[xe - wallSpace + w, ye + p] |= CELL_WALL_NORMAL; 
+                                    }
+                                }        
+                            }
                             if ((rawMap[x, y] & CELL_PATH_W) != 0) { exportMap[xe - wallSpace + w, ye + p] |= CELL_GROUND_NORMAL; }
                             else if ((rawMap[x, y] & CELL_PATH_W) == 0) { exportMap[xe - wallSpace + w, ye + p] |= CELL_WALL_NORMAL; }
                         }
@@ -839,6 +881,8 @@ public class DunGen : MonoBehaviour
                 if((exportMap[x, y] & CELL_ROOMFLOOR_NORMAL) != 0)
                 {
                     tilemapGround.SetTile(new Vector3Int(x, y, 0), roomNormalFloor[Random.Range(0, roomNormalFloor.Count)]);
+                    //TONI int wallIndex = Random.Range(0, wallNormalForeground.Count);
+                    //tilemapGround.SetTile(new Vector3Int(x, y, 0), wallNormalForeground[wallIndex]);
                 }
                 else if((exportMap[x, y] & CELL_ROOMFLOOR_START) != 0)
                 {
@@ -856,11 +900,36 @@ public class DunGen : MonoBehaviour
                 //Wall
                 if ((exportMap[x, y] & CELL_WALL_NORMAL) != 0)
                 {
-                    int wallIndex = Random.Range(0, wallNormalForeground.Count);
-                    tilemapWallForeground.SetTile(new Vector3Int(x, y, 0), wallNormalForeground[wallIndex]);
-                    //Hide the back ground if it is hidden in wall
-                    if (y - 1 < 0 || exportMap[x, y - 1] == 0 || (exportMap[x, y - 1] & CELL_GROUND_NORMAL) != 0)
-                        tilemapWallBackground.SetTile(new Vector3Int(x, y, 0), wallNormalBackground[wallIndex]);
+                    if (x>0 && y>0 && x < exportMap.GetLength(0) && y < exportMap.GetLength(1)-1)
+                    {
+                        if ((exportMap[x+1,y] & CELL_GROUND_NORMAL)==0 && (exportMap[x-1,y] & CELL_GROUND_NORMAL)==0)
+                        {
+                            Debug.Log(exportMap[x,y+1] & CELL_GROUND_NORMAL); 
+                            // TODO eliminacion de algunos muros para conectar pasillos, pongo situacion imposible
+                            if (Random.Range(0,10) > 11)
+                            {
+                                tilemapWallForeground.SetTile(new Vector3Int(x, y, 0), roomNormalFloor[Random.Range(0, roomNormalFloor.Count)]);
+                            }else{
+                                int wallIndex = Random.Range(0, wallNormalForeground.Count);
+                                tilemapWallForeground.SetTile(new Vector3Int(x, y, 0), wallNormalForeground[wallIndex]);
+                                //Hide the back ground if it is hidden in wall
+                                if (y - 1 < 0 || exportMap[x, y - 1] == 0 || (exportMap[x, y - 1] & CELL_GROUND_NORMAL) != 0)
+                                    tilemapWallBackground.SetTile(new Vector3Int(x, y, 0), wallNormalBackground[wallIndex]);
+                            }
+                        }else {
+                            int wallIndex = Random.Range(0, wallNormalForeground.Count);
+                            tilemapWallForeground.SetTile(new Vector3Int(x, y, 0), wallNormalForeground[wallIndex]);
+                            //Hide the back ground if it is hidden in wall
+                            if (y - 1 < 0 || exportMap[x, y - 1] == 0 || (exportMap[x, y - 1] & CELL_GROUND_NORMAL) != 0)
+                                tilemapWallBackground.SetTile(new Vector3Int(x, y, 0), wallNormalBackground[wallIndex]);
+                        }
+                    } else{
+                        int wallIndex = Random.Range(0, wallNormalForeground.Count);
+                        tilemapWallForeground.SetTile(new Vector3Int(x, y, 0), wallNormalForeground[wallIndex]);
+                        //Hide the back ground if it is hidden in wall
+                        if (y - 1 < 0 || exportMap[x, y - 1] == 0 || (exportMap[x, y - 1] & CELL_GROUND_NORMAL) != 0)
+                            tilemapWallBackground.SetTile(new Vector3Int(x, y, 0), wallNormalBackground[wallIndex]);
+                    }
                 }
                 else if ((exportMap[x, y] & CELL_WALL_CORNER) != 0)
                 {
@@ -899,6 +968,15 @@ public class DunGen : MonoBehaviour
                 //Player(Demo)
                 int ConvertRawToExport(float coordinate) => (int)((coordinate + 1) * wallSpace + coordinate * groundSpace);
                 player.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[0].x), ConvertRawToExport(rooms[0].z - 1)), Random.Range(ConvertRawToExport(rooms[0].y), ConvertRawToExport(rooms[0].w - 1)), 0);
+                // hormigaReina.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[2].x), ConvertRawToExport(rooms[2].z - 1)), Random.Range(ConvertRawToExport(rooms[2].y), ConvertRawToExport(rooms[2].w - 1)), 0);
+                // hormigaRoja.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[3].x), ConvertRawToExport(rooms[3].z - 1)), Random.Range(ConvertRawToExport(rooms[3].y), ConvertRawToExport(rooms[3].w - 1)), 0);
+                // hormigaVerde.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[4].x), ConvertRawToExport(rooms[4].z - 1)), Random.Range(ConvertRawToExport(rooms[4].y), ConvertRawToExport(rooms[4].w - 1)), 0);
+                // hormigaAzul.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[5].x), ConvertRawToExport(rooms[5].z - 1)), Random.Range(ConvertRawToExport(rooms[5].y), ConvertRawToExport(rooms[5].w - 1)), 0);
+                // raizReina.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[6].x), ConvertRawToExport(rooms[6].z - 1)), Random.Range(ConvertRawToExport(rooms[6].y), ConvertRawToExport(rooms[6].w - 1)), 0);
+                // raizRoja.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[7].x), ConvertRawToExport(rooms[7].z - 1)), Random.Range(ConvertRawToExport(rooms[7].y), ConvertRawToExport(rooms[7].w - 1)), 0);
+                // raizVerde.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[8].x), ConvertRawToExport(rooms[8].z - 1)), Random.Range(ConvertRawToExport(rooms[8].y), ConvertRawToExport(rooms[8].w - 1)), 0);
+                // raizAzul.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[9].x), ConvertRawToExport(rooms[9].z - 1)), Random.Range(ConvertRawToExport(rooms[9].y), ConvertRawToExport(rooms[9].w - 1)), 0);
+
                 CancelInvoke(); InvokeRepeating(nameof(UIFollowPlayer), 0, 0.01f);
             }
         }
