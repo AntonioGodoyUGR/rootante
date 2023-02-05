@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DemoPlayerMovement : MonoBehaviour
 {
@@ -9,14 +10,26 @@ public class DemoPlayerMovement : MonoBehaviour
     public FrameAnimation idle;
     public FrameAnimation walk;
 
+    //pickup
+    private bool touchingpickup = false;
+    private GameObject go;
+    public GameObject caldero;
+    private CalderoBehaviour cb;
+    public Map _myInput;
+
     //The vector for acceleration
     private Vector2 moveVector;
     //Frame animator to play walk and idle animation
     private FrameAnimator frameAnimator;
 
     //Initialization
-    private void Start() => frameAnimator = GetComponentInChildren<FrameAnimator>();
+    private void Start(){
+        frameAnimator = GetComponentInChildren<FrameAnimator>();
+        cb = caldero.GetComponent("CalderoBehaviour") as CalderoBehaviour;
+        _myInput = new Map();
+        _myInput.Mover.Enable();
 
+    }
     //Called each frame, used for key recognition
     private void Update()
     {
@@ -35,6 +48,36 @@ public class DemoPlayerMovement : MonoBehaviour
         moveVector.x = Input.GetKey(KeyCode.LeftArrow) ? Mathf.Clamp(moveVector.x - acceleration * Time.deltaTime, -1, 1) : moveVector.x;
         moveVector.y = Input.GetKey(KeyCode.UpArrow) ? Mathf.Clamp(moveVector.y + acceleration * Time.deltaTime, -1, 1) : moveVector.y;
         moveVector.y = Input.GetKey(KeyCode.DownArrow) ? Mathf.Clamp(moveVector.y - acceleration * Time.deltaTime, -1, 1) : moveVector.y;
+
+        if (_myInput.Mover.Pickup.WasPressedThisFrame())
+        {
+            Debug.Log("pickuping");
+            if (touchingpickup){
+                go.transform.SetParent(this.transform);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (true)
+        {
+           go = other.gameObject;
+            if (go.tag == "Raiz") 
+            {
+                touchingpickup=true;
+
+            } else if (go.tag == "Caldero" && cb.cocinada)
+            {
+                touchingpickup=true;
+            }
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        touchingpickup=false;
     }
 
     //Refresh the dash gauge by checking time list

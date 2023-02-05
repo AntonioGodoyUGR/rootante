@@ -46,13 +46,13 @@ public partial class @Map : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dance"",
-                    ""type"": ""Value"",
+                    ""name"": ""Pickup"",
+                    ""type"": ""Button"",
                     ""id"": ""f82af89b-bc75-42cd-b3b1-cb32af27a9c6"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -190,12 +190,34 @@ public partial class @Map : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""16cbfdca-d9e1-475b-9680-c20e320df947"",
-                    ""path"": """",
+                    ""id"": ""b31ddcb3-495e-4aa4-a3c9-69761ac4c1f8"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dance"",
+                    ""action"": ""Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16cbfdca-d9e1-475b-9680-c20e320df947"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pickup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c40c7d9-82d9-42a1-ae90-d1c2cba0ecf7"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pickup"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -236,7 +258,7 @@ public partial class @Map : IInputActionCollection2, IDisposable
         m_Mover = asset.FindActionMap("Mover", throwIfNotFound: true);
         m_Mover_Move = m_Mover.FindAction("Move", throwIfNotFound: true);
         m_Mover_Action = m_Mover.FindAction("Action", throwIfNotFound: true);
-        m_Mover_Dance = m_Mover.FindAction("Dance", throwIfNotFound: true);
+        m_Mover_Pickup = m_Mover.FindAction("Pickup", throwIfNotFound: true);
         // New action map1
         m_Newactionmap1 = asset.FindActionMap("New action map1", throwIfNotFound: true);
         m_Newactionmap1_Newaction = m_Newactionmap1.FindAction("New action", throwIfNotFound: true);
@@ -301,14 +323,14 @@ public partial class @Map : IInputActionCollection2, IDisposable
     private IMoverActions m_MoverActionsCallbackInterface;
     private readonly InputAction m_Mover_Move;
     private readonly InputAction m_Mover_Action;
-    private readonly InputAction m_Mover_Dance;
+    private readonly InputAction m_Mover_Pickup;
     public struct MoverActions
     {
         private @Map m_Wrapper;
         public MoverActions(@Map wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Mover_Move;
         public InputAction @Action => m_Wrapper.m_Mover_Action;
-        public InputAction @Dance => m_Wrapper.m_Mover_Dance;
+        public InputAction @Pickup => m_Wrapper.m_Mover_Pickup;
         public InputActionMap Get() { return m_Wrapper.m_Mover; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -324,9 +346,9 @@ public partial class @Map : IInputActionCollection2, IDisposable
                 @Action.started -= m_Wrapper.m_MoverActionsCallbackInterface.OnAction;
                 @Action.performed -= m_Wrapper.m_MoverActionsCallbackInterface.OnAction;
                 @Action.canceled -= m_Wrapper.m_MoverActionsCallbackInterface.OnAction;
-                @Dance.started -= m_Wrapper.m_MoverActionsCallbackInterface.OnDance;
-                @Dance.performed -= m_Wrapper.m_MoverActionsCallbackInterface.OnDance;
-                @Dance.canceled -= m_Wrapper.m_MoverActionsCallbackInterface.OnDance;
+                @Pickup.started -= m_Wrapper.m_MoverActionsCallbackInterface.OnPickup;
+                @Pickup.performed -= m_Wrapper.m_MoverActionsCallbackInterface.OnPickup;
+                @Pickup.canceled -= m_Wrapper.m_MoverActionsCallbackInterface.OnPickup;
             }
             m_Wrapper.m_MoverActionsCallbackInterface = instance;
             if (instance != null)
@@ -337,9 +359,9 @@ public partial class @Map : IInputActionCollection2, IDisposable
                 @Action.started += instance.OnAction;
                 @Action.performed += instance.OnAction;
                 @Action.canceled += instance.OnAction;
-                @Dance.started += instance.OnDance;
-                @Dance.performed += instance.OnDance;
-                @Dance.canceled += instance.OnDance;
+                @Pickup.started += instance.OnPickup;
+                @Pickup.performed += instance.OnPickup;
+                @Pickup.canceled += instance.OnPickup;
             }
         }
     }
@@ -381,7 +403,7 @@ public partial class @Map : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAction(InputAction.CallbackContext context);
-        void OnDance(InputAction.CallbackContext context);
+        void OnPickup(InputAction.CallbackContext context);
     }
     public interface INewactionmap1Actions
     {

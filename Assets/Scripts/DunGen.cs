@@ -62,11 +62,14 @@ public class DunGen : MonoBehaviour
     // public GameObject hormigaRoja;
     // public GameObject hormigaVerde;
     // public GameObject hormigaAzul;
-    
+
     // public GameObject raizReina;
     // public GameObject raizRoja;
     // public GameObject raizVerde;
     // public GameObject raizAzul;
+    //public GameObject raiz;
+    //public GameObject caldero;
+    public GameObject[] elementos;
 
     public RectTransform tagUI;
     public void SetMapHeight(float value) => mapHeight = (int)value;
@@ -741,8 +744,6 @@ public class DunGen : MonoBehaviour
                             
                             if ((rawMap[x, y] & CELL_DOOR_S) != 0) {
                                 if (x>0 && y > 0 && x < rawMap.GetLength(0) && y < rawMap.GetLength(1)-1){
-                                    Debug.Log(y);
-                                    Debug.Log(rawMap.GetLength(1));
                                     if ((rawMap[x, y+1] & CELL_ROOM_START) != 0 && (rawMap[x, y-1] & CELL_ROOM_START)!= 0 && (rawMap[x, y+1] & CELL_ROOM_END) != 0 && (rawMap[x, y-1] & CELL_ROOM_END)!= 0) {
                                         //exportMap[xe + p, ye - wallSpace + w] |= CELL_WALL_NORMAL;
                                     }
@@ -968,6 +969,12 @@ public class DunGen : MonoBehaviour
                 //Player(Demo)
                 int ConvertRawToExport(float coordinate) => (int)((coordinate + 1) * wallSpace + coordinate * groundSpace);
                 player.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[0].x), ConvertRawToExport(rooms[0].z - 1)), Random.Range(ConvertRawToExport(rooms[0].y), ConvertRawToExport(rooms[0].w - 1)), 0);
+                
+
+                for (int i = 0; i < elementos.Length; i++)
+                {
+                    elementos[i].transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[i].x), ConvertRawToExport(rooms[i].z - 1)), Random.Range(ConvertRawToExport(rooms[i].y), ConvertRawToExport(rooms[i].w - 1)), 0);
+                }
                 // hormigaReina.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[2].x), ConvertRawToExport(rooms[2].z - 1)), Random.Range(ConvertRawToExport(rooms[2].y), ConvertRawToExport(rooms[2].w - 1)), 0);
                 // hormigaRoja.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[3].x), ConvertRawToExport(rooms[3].z - 1)), Random.Range(ConvertRawToExport(rooms[3].y), ConvertRawToExport(rooms[3].w - 1)), 0);
                 // hormigaVerde.transform.position = new Vector3(Random.Range(ConvertRawToExport(rooms[4].x), ConvertRawToExport(rooms[4].z - 1)), Random.Range(ConvertRawToExport(rooms[4].y), ConvertRawToExport(rooms[4].w - 1)), 0);

@@ -7,9 +7,14 @@ public class Hormiga : MonoBehaviour
     // Start is called before the first frame update
     private GameObject go;
     private bool curado;
+    private MoverHormiga2 mh;
+    public GameObject jugador;
+
+
     void Start()
     {
         curado = false;
+        mh = jugador.GetComponent("MoverHormiga2") as MoverHormiga2;
     }
 
     // Update is called once per frame
@@ -18,7 +23,7 @@ public class Hormiga : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (!curado)
         {
@@ -27,9 +32,12 @@ public class Hormiga : MonoBehaviour
             {
                 go.SetActive(false);
                 curado = true;
+                mh.pickedObject = null;
                 // TODO: asegurarnos de que el jugador no tiene item
+                // TODO: actualizar contador de hormigas en el GameManager
                 if (this.gameObject.tag == "Reina"){
                     //TODO: victoria
+                    Debug.Log("WIIIN");
                 }
             }
         }

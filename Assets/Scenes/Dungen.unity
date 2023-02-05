@@ -818,6 +818,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: hormigaRoja
       objectReference: {fileID: 0}
+    - target: {fileID: 387206596739963893, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5699666580680355535, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1577,7 +1581,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1172396794}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &415410876
 PrefabInstance:
@@ -1641,6 +1645,10 @@ PrefabInstance:
     - target: {fileID: 201307581744493675, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_TagString
       value: hormigaRoja
+      objectReference: {fileID: 0}
+    - target: {fileID: 387206596739963893, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5699666580680355535, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_IsActive
@@ -3881,7 +3889,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1507625666}
   - {fileID: 1574314602}
   - {fileID: 1686794186}
   - {fileID: 403256930}
@@ -4294,6 +4301,10 @@ PrefabInstance:
     - target: {fileID: 201307581744493675, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_TagString
       value: hormigaRoja
+      objectReference: {fileID: 0}
+    - target: {fileID: 387206596739963893, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5699666580680355535, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_IsActive
@@ -5125,6 +5136,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: hormigaRoja
       objectReference: {fileID: 0}
+    - target: {fileID: 387206596739963893, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5699666580680355535, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5278,6 +5293,7 @@ Transform:
   - {fileID: 435390517}
   - {fileID: 212545292}
   - {fileID: 1878267663}
+  - {fileID: 1507625666}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5447,12 +5463,12 @@ GameObject:
   - component: {fileID: 1507625663}
   - component: {fileID: 1507625667}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: CameraGrid
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1507625663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5528,8 +5544,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1172396794}
-  m_RootOrder: 0
+  m_Father: {fileID: 1417211137}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1507625667
 MonoBehaviour:
@@ -5562,7 +5578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1517495699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5588,7 +5604,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1172396794}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1517495701
 MonoBehaviour:
@@ -5976,6 +5992,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: hormigaRoja
       objectReference: {fileID: 0}
+    - target: {fileID: 387206596739963893, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5699666580680355535, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6081,7 +6101,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1172396794}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1580515932
 GameObject:
@@ -6315,6 +6335,10 @@ PrefabInstance:
     - target: {fileID: 201307581744493675, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_TagString
       value: hormigaRoja
+      objectReference: {fileID: 0}
+    - target: {fileID: 387206596739963893, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5699666580680355535, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_IsActive
@@ -6648,7 +6672,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1172396794}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1706954019
 PrefabInstance:
@@ -6712,6 +6736,10 @@ PrefabInstance:
     - target: {fileID: 201307581744493675, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_TagString
       value: hormigaRoja
+      objectReference: {fileID: 0}
+    - target: {fileID: 387206596739963893, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5699666580680355535, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_IsActive
@@ -7278,7 +7306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1878267663
 Transform:
   m_ObjectHideFlags: 0
@@ -7561,6 +7589,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: hormigaRoja
       objectReference: {fileID: 0}
+    - target: {fileID: 387206596739963893, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5699666580680355535, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7761,6 +7793,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 201307581744493586, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 201307581744493590, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7809,6 +7845,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 387206596739963893, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 387206596739963893, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: gridCamera
+      value: 
+      objectReference: {fileID: 1507625662}
+    - target: {fileID: 387206596739963893, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 137189185}
     - target: {fileID: 5699666580680355535, guid: 5f9b341d05a8b0049b8da66f6e0f4977, type: 3}
       propertyPath: m_IsActive
       value: 0

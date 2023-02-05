@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class CalderoBehaviour : MonoBehaviour
 {
-    public GameObject raiz1;
-    public GameObject raiz2;
-    public GameObject raiz3;
-
     private GameObject go;
 
-    private int contador;
+    public int contador;
     public bool cocinada;
 
    
@@ -25,7 +21,7 @@ public class CalderoBehaviour : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (!cocinada)
         {
@@ -33,7 +29,7 @@ public class CalderoBehaviour : MonoBehaviour
             if (go.tag == "Raiz") 
             {
                 go.SetActive(false);
-                contador = contador++;
+                contador = contador + 1;
                 
                 if (contador >= 3) cocinada = true;
                 

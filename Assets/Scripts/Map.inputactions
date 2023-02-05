@@ -24,13 +24,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dance",
-                    "type": "Value",
+                    "name": "Pickup",
+                    "type": "Button",
                     "id": "f82af89b-bc75-42cd-b3b1-cb32af27a9c6",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -168,12 +168,34 @@
                 },
                 {
                     "name": "",
-                    "id": "16cbfdca-d9e1-475b-9680-c20e320df947",
-                    "path": "",
+                    "id": "b31ddcb3-495e-4aa4-a3c9-69761ac4c1f8",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dance",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "16cbfdca-d9e1-475b-9680-c20e320df947",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pickup",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c40c7d9-82d9-42a1-ae90-d1c2cba0ecf7",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pickup",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
