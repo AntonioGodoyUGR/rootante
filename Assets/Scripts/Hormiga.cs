@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Hormiga : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Hormiga : MonoBehaviour
     private bool curado;
     private MoverHormiga2 mh;
     public GameObject jugador;
-
+    public GameManager manager;
 
     void Start()
     {
@@ -33,11 +34,11 @@ public class Hormiga : MonoBehaviour
                 go.SetActive(false);
                 curado = true;
                 mh.pickedObject = null;
+                manager.numeroHormigas += 1;
                 // TODO: asegurarnos de que el jugador no tiene item
                 // TODO: actualizar contador de hormigas en el GameManager
                 if (this.gameObject.tag == "Reina"){
-                    //TODO: victoria
-                    Debug.Log("WIIIN");
+                    SceneManager.LoadScene("Scenes/GameWin");
                 }
             }
         }

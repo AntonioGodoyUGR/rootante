@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Dungen");
+        SceneManager.LoadScene("Scenes/DungenFinal");
     }
 
     public void QuitGame()
@@ -28,5 +28,13 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
     
-    
+    public void Back()
+    {
+        SceneManager.LoadScene("Scenes/LoadGame");
+    }
+    public void Controles()
+    {
+        SceneManager.LoadScene("Scenes/Controller");
+    }
+
 }

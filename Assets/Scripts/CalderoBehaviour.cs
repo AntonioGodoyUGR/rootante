@@ -8,7 +8,8 @@ public class CalderoBehaviour : MonoBehaviour
 
     public int contador;
     public bool cocinada;
-
+    public SpriteRenderer calderoSR;
+    public Sprite calderoHecho;
    
     void Start()
     {
@@ -30,9 +31,12 @@ public class CalderoBehaviour : MonoBehaviour
             {
                 go.SetActive(false);
                 contador = contador + 1;
-                
-                if (contador >= 3) cocinada = true;
-                
+
+                if (contador >= 3)
+                {
+                    calderoSR.sprite = calderoHecho;
+                    cocinada = true;
+                }
             }
         }
     }

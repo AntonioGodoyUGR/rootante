@@ -10,11 +10,26 @@ EditorBuildSettings:
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/History.unity
-    guid: 811e789f4d7ceff4db15ac09b785d0f6
+    guid: eb507a26d79e96f4cafafca375ed0eb9
   - enabled: 1
     path: Assets/Scenes/LoadGame.unity
-    guid: 191d557645f0f324bac36dba48313c7c
-  - enabled: 1
+    guid: 811e789f4d7ceff4db15ac09b785d0f6
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Dungen.unity
     guid: c3ae946e90d4b3c43ac964c8c33e29f7
+  - enabled: 1
+    path: Assets/Scenes/DungenFinal.unity
+    guid: e1a9febfbcd4ee543917e0a576bab96c
+  - enabled: 1
+    path: Assets/Scenes/GameWin.unity
+    guid: d94c9cd263aa50444b75c3f11e58d809
+  - enabled: 1
+    path: Assets/Scenes/Controller.unity
+    guid: 16afcbd3f906fc847995bb9d3c1f0534
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: c12bb5ed8f893eb4184a61f17c05ce0d
   m_configObjects: {}

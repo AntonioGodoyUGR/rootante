@@ -185,9 +185,9 @@ public class DunGen : MonoBehaviour
         areaStackTemp.Clear();
 
         //Check if the wall data is complete
-        if (wallNormalForeground.Count != wallNormalBackground.Count) { Debug.LogError("Foreground and background tile counts are not equal, did you missed to assign any tile?"); return; }
-        if (wallCornerForeground.Count != wallCornerBackground.Count) { Debug.LogError("Foreground and background tile counts are not equal, did you missed to assign any tile?"); return; }
-        if (wallIndividualForeground.Count != wallIndividualBackground.Count) { Debug.LogError("Foreground and background tile counts are not equal, did you missed to assign any tile?"); return; }
+        //if (wallNormalForeground.Count != wallNormalBackground.Count) { Debug.LogError("Foreground and background tile counts are not equal, did you missed to assign any tile?"); return; }
+        //if (wallCornerForeground.Count != wallCornerBackground.Count) { Debug.LogError("Foreground and background tile counts are not equal, did you missed to assign any tile?"); return; }
+        //if (wallIndividualForeground.Count != wallIndividualBackground.Count) { Debug.LogError("Foreground and background tile counts are not equal, did you missed to assign any tile?"); return; }
 
         //Generate dungeon
         CreateRooms();
@@ -220,8 +220,8 @@ public class DunGen : MonoBehaviour
                 // ranPosX = Random.Range(0, mapWidth - roomStartWidth.y);
                 // ranPosY = Random.Range(0, mapHeight - roomStartHeight.y);
 
-                ranWidth = 3;
-                ranHeight = 3;
+                ranWidth = 2;
+                ranHeight = 2;
                 ranPosX = Random.Range(0, mapWidth - roomStartWidth.y);
                 ranPosY = Random.Range(0, mapHeight - roomStartHeight.y);
                 //Create room if not overlapped
@@ -235,8 +235,8 @@ public class DunGen : MonoBehaviour
             else if (!endRoomCreated)
             {
                 //Get a random position, width and height
-                ranWidth = 3;
-                ranHeight = 3;
+                ranWidth = 2;
+                ranHeight = 2;
                 ranPosX = Random.Range(0, mapWidth - roomEndWidth.y);
                 ranPosY = Random.Range(0, mapHeight - roomEndHeight.y);
                 //Create room if not overlapped
