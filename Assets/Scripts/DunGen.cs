@@ -900,19 +900,12 @@ public class DunGen : MonoBehaviour
                 //Wall
                 if ((exportMap[x, y] & CELL_WALL_NORMAL) != 0)
                 {
-<<<<<<< HEAD
                     if (x>0 && y>0 && x < exportMap.GetLength(0)-1 && y < exportMap.GetLength(1))
-=======
-                    if (x > 0 && y > 0 && x < exportMap.GetLength(0) && y < exportMap.GetLength(1) - 1)
->>>>>>> escena problem
                     {
                         if ((exportMap[x + 1, y] & CELL_GROUND_NORMAL) == 0 && (exportMap[x - 1, y] & CELL_GROUND_NORMAL) == 0)
                         {
-<<<<<<< HEAD
+                            
                             //Debug.Log(exportMap[x,y+1] & CELL_GROUND_NORMAL); 
-=======
-                            Debug.Log(exportMap[x, y + 1] & CELL_GROUND_NORMAL);
->>>>>>> escena problem
                             // TODO eliminacion de algunos muros para conectar pasillos, pongo situacion imposible
                             if (Random.Range(0, 10) > 11)
                             {
