@@ -93,32 +93,32 @@ public class DunGen : MonoBehaviour
     const int INDEX_ROOM_END = 1;
 
     //Bitwise consts in raw map
-    const int CELL_PATH_N      = 0x0001;
-    const int CELL_PATH_E      = 0x0002;
-    const int CELL_PATH_S      = 0x0004;
-    const int CELL_PATH_W      = 0x0008;
-    const int CELL_DOOR_N      = 0x0010;
-    const int CELL_DOOR_E      = 0x0020;
-    const int CELL_DOOR_S      = 0x0040;
-    const int CELL_DOOR_W      = 0x0080;
-    const int CELL_MARKED      = 0x0100;
-    const int CELL_LINKED      = 0x0200;
+    const int CELL_PATH_N = 0x0001;
+    const int CELL_PATH_E = 0x0002;
+    const int CELL_PATH_S = 0x0004;
+    const int CELL_PATH_W = 0x0008;
+    const int CELL_DOOR_N = 0x0010;
+    const int CELL_DOOR_E = 0x0020;
+    const int CELL_DOOR_S = 0x0040;
+    const int CELL_DOOR_W = 0x0080;
+    const int CELL_MARKED = 0x0100;
+    const int CELL_LINKED = 0x0200;
     const int CELL_ROOM_NORMAL = 0x0400;
-    const int CELL_ROOM_START  = 0x0800;
-    const int CELL_ROOM_END    = 0x1000;
+    const int CELL_ROOM_START = 0x0800;
+    const int CELL_ROOM_END = 0x1000;
 
     //Bitwise consts in export map
-    const int CELL_DOOR_HORIZONTAL  = 0x001;
-    const int CELL_DOOR_VERTICAL    = 0x002;
-    const int CELL_GROUND_NORMAL    = 0x004;
-    const int CELL_GROUND_GRID      = 0x008;
+    const int CELL_DOOR_HORIZONTAL = 0x001;
+    const int CELL_DOOR_VERTICAL = 0x002;
+    const int CELL_GROUND_NORMAL = 0x004;
+    const int CELL_GROUND_GRID = 0x008;
     const int CELL_ROOMFLOOR_NORMAL = 0x010;
-    const int CELL_ROOMFLOOR_START  = 0x020;
-    const int CELL_ROOMFLOOR_END    = 0x040;
-    const int CELL_WALL_NORMAL      = 0x080;
-    const int CELL_WALL_CORNER      = 0x100;
-    const int CELL_WALL_INDIVIDUAL  = 0x200;
-    const int CELL_SHADOW           = 0x400;
+    const int CELL_ROOMFLOOR_START = 0x020;
+    const int CELL_ROOMFLOOR_END = 0x040;
+    const int CELL_WALL_NORMAL = 0x080;
+    const int CELL_WALL_CORNER = 0x100;
+    const int CELL_WALL_INDIVIDUAL = 0x200;
+    const int CELL_SHADOW = 0x400;
     #endregion
     #endregion
 
@@ -310,18 +310,18 @@ public class DunGen : MonoBehaviour
             for (int h = 0; h < height; h++)
             {
                 //If cell marked
-                if ((w!=0) && (h!=0) && (h != mapHeight - 1) && (w != mapWidth - 1))
+                if ((w != 0) && (h != 0) && (h != mapHeight - 1) && (w != mapWidth - 1))
                 // if (true)
                 {
                     if ((rawMap[positionX + w, positionY + h] & CELL_MARKED) != 0 ||
-                        (rawMap[positionX + w+1, positionY + h] & CELL_MARKED) != 0 ||
-                        (rawMap[positionX + w-1, positionY + h] & CELL_MARKED) != 0 ||
-                        (rawMap[positionX + w, positionY + h+1] & CELL_MARKED) != 0 ||
-                        (rawMap[positionX + w, positionY + h-1] & CELL_MARKED) != 0 ||
-                        (rawMap[positionX + w+1, positionY + h+1] & CELL_MARKED) != 0 ||
-                        (rawMap[positionX + w-1, positionY + h-1] & CELL_MARKED) != 0 ||
-                        (rawMap[positionX + w-1, positionY + h+1] & CELL_MARKED) != 0 ||
-                        (rawMap[positionX + w+1, positionY + h-1] & CELL_MARKED) != 0)
+                        (rawMap[positionX + w + 1, positionY + h] & CELL_MARKED) != 0 ||
+                        (rawMap[positionX + w - 1, positionY + h] & CELL_MARKED) != 0 ||
+                        (rawMap[positionX + w, positionY + h + 1] & CELL_MARKED) != 0 ||
+                        (rawMap[positionX + w, positionY + h - 1] & CELL_MARKED) != 0 ||
+                        (rawMap[positionX + w + 1, positionY + h + 1] & CELL_MARKED) != 0 ||
+                        (rawMap[positionX + w - 1, positionY + h - 1] & CELL_MARKED) != 0 ||
+                        (rawMap[positionX + w - 1, positionY + h + 1] & CELL_MARKED) != 0 ||
+                        (rawMap[positionX + w + 1, positionY + h - 1] & CELL_MARKED) != 0)
 
                     // if ((rawMap[positionX + w, positionY + h] & CELL_MARKED) != 0)
                     {
@@ -689,7 +689,7 @@ public class DunGen : MonoBehaviour
     public void ExportMap()
     {
         //For every valid cell, fill each direction with walls and paths
-        for(int x = 0; x < rawMap.GetLength(0); x++)
+        for (int x = 0; x < rawMap.GetLength(0); x++)
         {
             for (int y = 0; y < rawMap.GetLength(1); y++)
             {
@@ -717,10 +717,10 @@ public class DunGen : MonoBehaviour
                             //North
                             // TONI if ((rawMap[x, y] & CELL_DOOR_N) != 0) { exportMap[xe + p, ye + groundSpace + w] |= CELL_DOOR_HORIZONTAL; }
                             if ((rawMap[x, y] & CELL_DOOR_N) != 0) {
-                                if (x>0 && y > 0 && x < rawMap.GetLength(0) && y < rawMap.GetLength(1)){
-                                    if ((rawMap[x, y+1] & CELL_ROOM_START) != 0 && (rawMap[x, y-1] & CELL_ROOM_START)!= 0 && (rawMap[x, y+1] & CELL_ROOM_END) != 0 && (rawMap[x, y-1] & CELL_ROOM_END)!= 0) {
+                                if (x > 0 && y > 0 && x < rawMap.GetLength(0) && y < rawMap.GetLength(1)) {
+                                    if ((rawMap[x, y + 1] & CELL_ROOM_START) != 0 && (rawMap[x, y - 1] & CELL_ROOM_START) != 0 && (rawMap[x, y + 1] & CELL_ROOM_END) != 0 && (rawMap[x, y - 1] & CELL_ROOM_END) != 0) {
                                         //exportMap[xe + p, ye + groundSpace + w] |= CELL_WALL_NORMAL; 
-                                    
+
                                     }
                                 }
                             }
@@ -729,9 +729,9 @@ public class DunGen : MonoBehaviour
 
                             //East
                             // TONI if ((rawMap[x, y] & CELL_DOOR_E) != 0) { exportMap[xe + groundSpace + w, ye + p] |= CELL_DOOR_VERTICAL; }
-                            if ((rawMap[x, y] & CELL_DOOR_E) != 0) { 
-                                if (x>0 && y > 0 && x < rawMap.GetLength(0) && y < rawMap.GetLength(1)){
-                                    if ((rawMap[x+1, y] & CELL_ROOM_START) != 0 && (rawMap[x-1, y] & CELL_ROOM_START)!= 0 && (rawMap[x+1, y] & CELL_ROOM_END) != 0 && (rawMap[x-1, y] & CELL_ROOM_END)!= 0) {
+                            if ((rawMap[x, y] & CELL_DOOR_E) != 0) {
+                                if (x > 0 && y > 0 && x < rawMap.GetLength(0) && y < rawMap.GetLength(1)) {
+                                    if ((rawMap[x + 1, y] & CELL_ROOM_START) != 0 && (rawMap[x - 1, y] & CELL_ROOM_START) != 0 && (rawMap[x + 1, y] & CELL_ROOM_END) != 0 && (rawMap[x - 1, y] & CELL_ROOM_END) != 0) {
                                         //exportMap[xe + groundSpace + w, ye + p] |= CELL_WALL_NORMAL;
                                     }
                                 }
@@ -741,7 +741,7 @@ public class DunGen : MonoBehaviour
 
                             //South
                             // TONI if ((rawMap[x, y] & CELL_DOOR_S) != 0) { exportMap[xe + p, ye - wallSpace + w] |= CELL_DOOR_HORIZONTAL; }
-                            
+
                             if ((rawMap[x, y] & CELL_DOOR_S) != 0) {
                                 if (x>0 && y > 0 && x < rawMap.GetLength(0) && y < rawMap.GetLength(1)-1){
                                     if ((rawMap[x, y+1] & CELL_ROOM_START) != 0 && (rawMap[x, y-1] & CELL_ROOM_START)!= 0 && (rawMap[x, y+1] & CELL_ROOM_END) != 0 && (rawMap[x, y-1] & CELL_ROOM_END)!= 0) {
@@ -754,12 +754,12 @@ public class DunGen : MonoBehaviour
 
                             //West
                             // TONI if ((rawMap[x, y] & CELL_DOOR_W) != 0) { exportMap[xe - wallSpace + w, ye + p] |= CELL_DOOR_VERTICAL; }
-                            if ((rawMap[x, y] & CELL_DOOR_W) != 0) { 
-                                if (x>0 && y > 0 && x < rawMap.GetLength(0)-1 && y < rawMap.GetLength(1)){
-                                    if ((rawMap[x+1, y] & CELL_ROOM_START) != 0 && (rawMap[x-1, y] & CELL_ROOM_START)!= 0 && (rawMap[x+1, y] & CELL_ROOM_END) != 0 && (rawMap[x-1, y] & CELL_ROOM_END)!= 0) {
+                            if ((rawMap[x, y] & CELL_DOOR_W) != 0) {
+                                if (x > 0 && y > 0 && x < rawMap.GetLength(0) - 1 && y < rawMap.GetLength(1)) {
+                                    if ((rawMap[x + 1, y] & CELL_ROOM_START) != 0 && (rawMap[x - 1, y] & CELL_ROOM_START) != 0 && (rawMap[x + 1, y] & CELL_ROOM_END) != 0 && (rawMap[x - 1, y] & CELL_ROOM_END) != 0) {
                                         //exportMap[xe - wallSpace + w, ye + p] |= CELL_WALL_NORMAL; 
                                     }
-                                }        
+                                }
                             }
                             if ((rawMap[x, y] & CELL_PATH_W) != 0) { exportMap[xe - wallSpace + w, ye + p] |= CELL_GROUND_NORMAL; }
                             else if ((rawMap[x, y] & CELL_PATH_W) == 0) { exportMap[xe - wallSpace + w, ye + p] |= CELL_WALL_NORMAL; }
@@ -840,9 +840,9 @@ public class DunGen : MonoBehaviour
     {
         int ConvertRawToExport(float coordinate) => (int)((coordinate + 1) * wallSpace + coordinate * groundSpace);
 
-        for(int x = 0; x < exportMap.GetLength(0); x++)
+        for (int x = 0; x < exportMap.GetLength(0); x++)
         {
-            for(int y = 0; y < exportMap.GetLength(1); y++)
+            for (int y = 0; y < exportMap.GetLength(1); y++)
             {
                 for (int i = 0; i < rooms.Count; i++)
                 {
@@ -874,26 +874,26 @@ public class DunGen : MonoBehaviour
     //Spawn the actural in-game map using the 2d array
     public void Spawn()
     {
-        for (int x = 0; x < exportMap.GetLength(0) ; x++)
+        for (int x = 0; x < exportMap.GetLength(0); x++)
         {
             for (int y = 0; y < exportMap.GetLength(1); y++)
             {
                 //Ground
-                if((exportMap[x, y] & CELL_ROOMFLOOR_NORMAL) != 0)
+                if ((exportMap[x, y] & CELL_ROOMFLOOR_NORMAL) != 0)
                 {
                     tilemapGround.SetTile(new Vector3Int(x, y, 0), roomNormalFloor[Random.Range(0, roomNormalFloor.Count)]);
                     //TONI int wallIndex = Random.Range(0, wallNormalForeground.Count);
                     //tilemapGround.SetTile(new Vector3Int(x, y, 0), wallNormalForeground[wallIndex]);
                 }
-                else if((exportMap[x, y] & CELL_ROOMFLOOR_START) != 0)
+                else if ((exportMap[x, y] & CELL_ROOMFLOOR_START) != 0)
                 {
                     tilemapGround.SetTile(new Vector3Int(x, y, 0), roomStartFloor[Random.Range(0, roomStartFloor.Count)]);
                 }
-                else if((exportMap[x, y] & CELL_ROOMFLOOR_END) != 0)
+                else if ((exportMap[x, y] & CELL_ROOMFLOOR_END) != 0)
                 {
                     tilemapGround.SetTile(new Vector3Int(x, y, 0), roomEndFloor[Random.Range(0, roomEndFloor.Count)]);
                 }
-                else if((exportMap[x, y] & CELL_GROUND_NORMAL) != 0)
+                else if ((exportMap[x, y] & CELL_GROUND_NORMAL) != 0)
                 {
                     tilemapGround.SetTile(new Vector3Int(x, y, 0), groundNormal[Random.Range(0, groundNormal.Count)]);
                 }
@@ -903,28 +903,29 @@ public class DunGen : MonoBehaviour
                 {
                     if (x>0 && y>0 && x < exportMap.GetLength(0)-1 && y < exportMap.GetLength(1))
                     {
-                        if ((exportMap[x+1,y] & CELL_GROUND_NORMAL)==0 && (exportMap[x-1,y] & CELL_GROUND_NORMAL)==0)
+                        if ((exportMap[x + 1, y] & CELL_GROUND_NORMAL) == 0 && (exportMap[x - 1, y] & CELL_GROUND_NORMAL) == 0)
                         {
+                            
                             //Debug.Log(exportMap[x,y+1] & CELL_GROUND_NORMAL); 
                             // TODO eliminacion de algunos muros para conectar pasillos, pongo situacion imposible
-                            if (Random.Range(0,10) > 11)
+                            if (Random.Range(0, 10) > 11)
                             {
                                 tilemapWallForeground.SetTile(new Vector3Int(x, y, 0), roomNormalFloor[Random.Range(0, roomNormalFloor.Count)]);
-                            }else{
+                            } else {
                                 int wallIndex = Random.Range(0, wallNormalForeground.Count);
                                 tilemapWallForeground.SetTile(new Vector3Int(x, y, 0), wallNormalForeground[wallIndex]);
                                 //Hide the back ground if it is hidden in wall
                                 if (y - 1 < 0 || exportMap[x, y - 1] == 0 || (exportMap[x, y - 1] & CELL_GROUND_NORMAL) != 0)
                                     tilemapWallBackground.SetTile(new Vector3Int(x, y, 0), wallNormalBackground[wallIndex]);
                             }
-                        }else {
+                        } else {
                             int wallIndex = Random.Range(0, wallNormalForeground.Count);
                             tilemapWallForeground.SetTile(new Vector3Int(x, y, 0), wallNormalForeground[wallIndex]);
                             //Hide the back ground if it is hidden in wall
                             if (y - 1 < 0 || exportMap[x, y - 1] == 0 || (exportMap[x, y - 1] & CELL_GROUND_NORMAL) != 0)
                                 tilemapWallBackground.SetTile(new Vector3Int(x, y, 0), wallNormalBackground[wallIndex]);
                         }
-                    } else{
+                    } else {
                         int wallIndex = Random.Range(0, wallNormalForeground.Count);
                         tilemapWallForeground.SetTile(new Vector3Int(x, y, 0), wallNormalForeground[wallIndex]);
                         //Hide the back ground if it is hidden in wall
